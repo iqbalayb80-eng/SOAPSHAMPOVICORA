@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f4e58c">
+<title>VICORA — One Bottle, Two Functions</title>
+
+<!-- Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   VICORA — 2 FULLSCREEN SECTIONS
+   Semua CSS berada di file ini.
+   ========================================================= */
+
+@font-face {
+  font-family: "Blacksword";
+  src: url("./assets/fonts/Blacksword.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* ---------- RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  background: #f4e58c;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #111;
+  background: #f4e58c;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  isolation: isolate;
+}
+
+/* ---------- BACKGROUND ----------
+   Primary:
+   user-local Windows path.
+   Fallback:
+   ./assets/background/bg1p3k.png
+   ./assets/background/bg2p3k.png
+
+   Ganti dua URL di bawah bila folder aset berada di lokasi lain.
+*/
+.slide-1 {
+  --bg: url("./assets/background/bg1p3k.png");
+  background-image: var(--bg);
+}
+
+.slide-2 {
+  --bg: url("./assets/background/bg2p3k.png");
+  background-image: var(--bg);
+}
+
+.slide-1,
+.slide-2 {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Fallback class yang bisa dipakai bila browser tidak mengizinkan
+   absolute Windows path. JavaScript di bawah otomatis mencoba
+   assets/background/*.png bila gambar utama gagal dimuat. */
+
+/* ---------- SOFT VIGNETTE ----------
+   Sangat tipis agar warna background asli tetap dominan.
+*/
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.035) 0%,
+      rgba(255,255,255,0) 30%,
+      rgba(255,255,255,.025) 100%
+    );
+}
+
+/* ---------- CONTENT LAYERS ---------- */
+.content-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.text {
+  position: absolute;
+  z-index: 20;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+.headline {
+  margin: 0;
+  color: #174b21;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.045em;
+  line-height: .92;
+  text-wrap: balance;
+}
+
+.body-copy {
+  margin: 0;
+  color: #111;
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+}
+
+.body-copy strong {
+  font-weight: 800;
+}
+
+.script {
+  font-family: "Blacksword", "Brush Script MT", cursive;
+  font-weight: 400;
+  color: #080808;
+}
+
+/* =========================================================
+   SECTION 1
+   ========================================================= */
+
+.s1-headline {
+  left: 6.9vw;
+  top: 4.0vh;
+  width: min(42vw, 720px);
+  font-size: clamp(42px, 4.2vw, 81px);
+}
+
+.s1-description {
+  left: 7.0vw;
+  top: 18.7vh;
+  width: min(35vw, 620px);
+  font-size: clamp(15px, 1.28vw, 25px);
+}
+
+.s1-banana-copy {
+  right: 8.2vw;
+  top: 8.4vh;
+  width: min(26vw, 500px);
+  color: #174b21;
+  font-size: clamp(18px, 1.62vw, 31px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.s1-center-copy {
+  left: 36.3vw;
+  top: 39.0vh;
+  width: min(34vw, 650px);
+  font-size: clamp(16px, 1.42vw, 27px);
+}
+
+.s1-hair {
+  left: 2.5vw;
+  top: 40.3vh;
+  width: 14vw;
+  text-align: center;
+}
+
+.s1-body {
+  right: 26vw;
+  top: 54.5vh;
+  width: 15vw;
+  text-align: center;
+}
+
+.feature-script {
+  display: block;
+  font-size: clamp(35px, 3.4vw, 66px);
+  line-height: .9;
+  margin-bottom: .08em;
+}
+
+.feature-sub {
+  display: block;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: clamp(10px, .78vw, 15px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+/* =========================================================
+   SECTION 2
+   ========================================================= */
+
+.s2-headline {
+  left: 50%;
+  top: 5.4vh;
+  width: min(78vw, 1250px);
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: clamp(37px, 4.05vw, 78px);
+}
+
+.s2-copy {
+  left: 30vw;
+  top: 39.4vh;
+  width: min(35vw, 660px);
+  font-size: clamp(15px, 1.38vw, 27px);
+}
+
+.s2-script {
+  left: 30.0vw;
+  bottom: 6.7vh;
+  width: 12vw;
+  text-align: left;
+}
+
+.s2-script .feature-script {
+  font-size: clamp(33px, 3.35vw, 65px);
+  line-height: .91;
+}
+
+/* =========================================================
+   ENTRANCE / EXIT ANIMATIONS
+   ========================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(.16,1,.3,1),
+    transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.delay-1 { transition-delay: .08s; }
+.reveal.delay-2 { transition-delay: .16s; }
+.reveal.delay-3 { transition-delay: .24s; }
+.reveal.delay-4 { transition-delay: .32s; }
+
+.section.is-visible .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* State awal IN setelah sebuah slide masuk kembali */
+.section:not(.is-visible) .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* OUT GLOBAL — berlaku untuk Slide 1 dan Slide 2 */
+.section.is-leaving .out {
+  opacity: 0 !important;
+  transform: translateY(-30px) !important;
+  transition:
+    opacity 1s cubic-bezier(.7,0,.84,0),
+    transform 1s cubic-bezier(.7,0,.84,0);
+}
+
+/* SECTION 2 — IN animation, sama seperti SECTION 1 */
+.section-2 .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(.16,1,.3,1),
+    transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+.section-2.is-visible .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Headline SECTION 2 tetap centered saat masuk */
+.s2-headline.reveal {
+  transform: translate(-50%, 50px);
+}
+
+.section-2:not(.is-visible) .s2-headline.reveal {
+  opacity: 0;
+  transform: translate(-50%, 50px);
+}
+
+.section-2.is-visible .s2-headline.reveal {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* SECTION 2 — OUT ketika kembali ke SECTION 1 */
+.section-2.is-leaving .reveal {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition:
+    opacity 1s cubic-bezier(.7,0,.84,0),
+    transform 1s cubic-bezier(.7,0,.84,0);
+}
+
+.section-2.is-leaving .s2-headline.reveal {
+  opacity: 0 !important;
+  transform: translate(-50%, -30px) !important;
+}
+
+/* =========================================================
+   LEAVES / DECORATIVE FLOATING LAYER
+   Hanya animasi elemen dekoratif; background utama tidak
+   digerakkan sehingga komposisi referensi tetap stabil.
+   ========================================================= */
+
+.leaf-float {
+  position: absolute;
+  z-index: 6;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  animation:
+    leafFloat var(--leaf-duration, 8s)
+    ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.leaf-float.one {
+  left: -1vw;
+  top: 2vh;
+  width: 12vw;
+  height: 22vh;
+}
+
+.leaf-float.two {
+  right: 1vw;
+  top: 2vh;
+  width: 13vw;
+  height: 20vh;
+  animation-delay: -2.4s;
+}
+
+.leaf-float.three {
+  left: -2vw;
+  bottom: -2vh;
+  width: 14vw;
+  height: 22vh;
+  animation-delay: -4.1s;
+}
+
+.leaf-float.four {
+  right: -1vw;
+  bottom: -2vh;
+  width: 14vw;
+  height: 22vh;
+  animation-delay: -1.2s;
+}
+
+.leaf-shape {
+  position: absolute;
+  width: 72%;
+  height: 42%;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, rgba(61,145,30,.72), rgba(18,81,28,.45));
+  filter: blur(.15px);
+  opacity: .26;
+}
+
+.leaf-shape.a { left: 4%; top: 18%; transform: rotate(-28deg); }
+.leaf-shape.b { left: 30%; top: 4%; transform: rotate(20deg) scale(.75); }
+.leaf-shape.c { left: 43%; top: 42%; transform: rotate(-8deg) scale(.58); }
+
+@keyframes leafFloat {
+  0% {
+    transform: translate3d(-4px, 2px, 0) rotate(-2deg) scale(.995);
+  }
+  50% {
+    transform: translate3d(4px, -5px, 0) rotate(2deg) scale(1.005);
+  }
+  100% {
+    transform: translate3d(-2px, -9px, 0) rotate(-1deg) scale(1);
+  }
+}
+
+/* =========================================================
+   BUBBLES
+   ========================================================= */
+
+.bubble-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  width: var(--size, 48px);
+  height: var(--size, 48px);
+  border: 1px solid rgba(255,255,255,.58);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 29% 25%,
+      rgba(255,255,255,.88) 0 3%,
+      rgba(255,255,255,.18) 9%,
+      rgba(255,255,255,.04) 36%,
+      rgba(164,224,255,.06) 58%,
+      rgba(255,178,233,.05) 75%,
+      rgba(255,255,255,.10) 100%
+    );
+  box-shadow:
+    inset 4px 5px 9px rgba(255,255,255,.32),
+    inset -5px -6px 11px rgba(142,205,255,.11),
+    0 0 12px rgba(255,255,255,.12);
+  backdrop-filter: blur(2px) saturate(125%);
+  -webkit-backdrop-filter: blur(2px) saturate(125%);
+  opacity: 0;
+  animation:
+    bubbleRise var(--duration, 9s)
+    var(--delay, 0s)
+    linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Refraction/highlight */
+.bubble::before {
+  content: "";
+  position: absolute;
+  width: 23%;
+  height: 15%;
+  left: 21%;
+  top: 17%;
+  border-radius: 50%;
+  background: rgba(255,255,255,.72);
+  filter: blur(1px);
+  transform: rotate(-25deg);
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  inset: 11%;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.02),
+    rgba(152,214,255,.035),
+    rgba(255,169,221,.025)
+  );
+}
+
+/* Bubble above text creates a localized glass/backdrop effect. */
+.bubble.interactive {
+  backdrop-filter: blur(3px) saturate(135%) contrast(102%);
+  -webkit-backdrop-filter: blur(3px) saturate(135%) contrast(102%);
+}
+
+@keyframes bubbleRise {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0, 15vh, 0)
+      scale(.72)
+      rotate(0deg);
+  }
+  10% {
+    opacity: .56;
+  }
+  48% {
+    opacity: .78;
+  }
+  82% {
+    opacity: .38;
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(var(--drift, 35px), -115vh, 0)
+      scale(var(--end-scale, 1.08))
+      rotate(var(--rotate, 18deg));
+  }
+}
+
+/* =========================================================
+   BUBBLE COLLISION / GLASS ZONE
+   Bubble di depan konten memakai backdrop-filter sehingga
+   hanya area lingkaran bubble yang membiaskan / memburamkan
+   layer di belakangnya — bukan seluruh halaman.
+   ========================================================= */
+
+.glass-bubble {
+  z-index: 55;
+}
+
+/* Fallback jika backdrop-filter tidak tersedia */
+@supports not ((backdrop-filter: blur(3px))) {
+  .bubble {
+    background:
+      radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.52),
+        rgba(255,255,255,.08) 42%,
+        rgba(255,255,255,.16) 100%
+      );
+  }
+}
+
+/* =========================================================
+   OPTIONAL HAIR-MORPH HOOK
+   Jika nanti tersedia PNG transparan khusus rambut, cukup
+   tambahkan class="hair-layer" dan background-image.
+   Tidak menggerakkan foto manusia yang menjadi background.
+   ========================================================= */
+
+.hair-layer {
+  position: absolute;
+  pointer-events: none;
+  z-index: 31;
+  opacity: .0;
+  animation: hairMorph 6.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hairMorph {
+  0%   { transform: translate3d(0,0,0) rotate(-.2deg) scale(1); }
+  50%  { transform: translate3d(1px,-1px,0) rotate(.2deg) scale(1.002); }
+  100% { transform: translate3d(-1px,1px,0) rotate(-.15deg) scale(.998); }
+}
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .s1-headline {
+    width: 48vw;
+  }
+
+  .s1-description {
+    width: 40vw;
+  }
+
+  .s1-center-copy,
+  .s2-copy {
+    left: 31.5vw;
+    width: 36vw;
+  }
+
+  .s1-hair {
+    left: 2vw;
+    width: 16vw;
+  }
+
+  .s1-body {
+    right: 14vw;
+    width: 18vw;
+  }
+}
+
+@media (max-width: 700px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+
+  section {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  /* Mobile tetap menggunakan background penuh.
+     Komposisi visual asli dipertahankan; teks direflow
+     hanya bila viewport tidak lagi cukup lebar. */
+  .slide-1,
+  .slide-2 {
+    background-position: center center;
+  }
+
+  .s1-headline {
+    left: 6vw;
+    top: 4.2svh;
+    width: 70vw;
+    font-size: clamp(33px, 10vw, 55px);
+    line-height: .91;
+  }
+
+  .s1-description {
+    left: 6vw;
+    top: 18.5svh;
+    width: 62vw;
+    font-size: clamp(11px, 3.2vw, 17px);
+    line-height: 1.16;
+  }
+
+  .s1-banana-copy {
+    right: 5vw;
+    top: 7.2svh;
+    width: 30vw;
+    font-size: clamp(10px, 3vw, 16px);
+  }
+
+  .s1-center-copy {
+    left: 37vw;
+    top: 39svh;
+    width: 48vw;
+    font-size: clamp(10px, 2.75vw, 15px);
+    line-height: 1.17;
+  }
+
+  .s1-hair {
+    left: 3vw;
+    top: 39.5svh;
+    width: 27vw;
+  }
+
+  .s1-body {
+    right: 6vw;
+    top: 55svh;
+    width: 25vw;
+  }
+
+  .feature-script {
+    font-size: clamp(25px, 7vw, 42px);
+  }
+
+  .feature-sub {
+    font-size: clamp(7px, 1.9vw, 10px);
+  }
+
+  .s2-headline {
+    top: 5.5svh;
+    width: 91vw;
+    font-size: clamp(29px, 8.3vw, 48px);
+    line-height: .93;
+  }
+
+  .s2-copy {
+    left: 5vw;
+    top: 39svh;
+    width: 57vw;
+    font-size: clamp(10px, 2.75vw, 15px);
+    line-height: 1.17;
+  }
+
+  .s2-script {
+    left: 29vw;
+    bottom: 7svh;
+    width: 20vw;
+  }
+
+  .s2-script .feature-script {
+    font-size: clamp(24px, 6.7vw, 39px);
+  }
+
+  .leaf-float.one,
+  .leaf-float.two,
+  .leaf-float.three,
+  .leaf-float.four {
+    width: 22vw;
+    height: 17vh;
+  }
+
+  .bubble {
+    --size: 34px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .s1-headline {
+    top: 4svh;
+    width: 73vw;
+    font-size: clamp(30px, 9.6vw, 43px);
+  }
+
+  .s1-description {
+    top: 17.5svh;
+    width: 67vw;
+    font-size: 10.5px;
+  }
+
+  .s1-banana-copy {
+    top: 7svh;
+    width: 29vw;
+    font-size: 9.8px;
+  }
+
+  .s1-center-copy,
+  .s2-copy {
+    font-size: 9.7px;
+  }
+
+  .s1-hair {
+    top: 39svh;
+  }
+
+  .s1-body {
+    top: 54.5svh;
+  }
+
+  .s2-headline {
+    width: 94vw;
+    font-size: 27px;
+  }
+
+  .s2-script .feature-script {
+    font-size: 27px;
+  }
+}
+
+/* Accessibility / reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     SECTION 1 — SATU BOTOL DUA FUNGSI
+     ======================================================= -->
+<section
+  id="section-1"
+  class="section slide-1 section-1"
+  aria-label="VICORA — Satu Botol Dua Fungsi"
+  data-fallback-bg="./assets/background/bg1p3k.png"
+>
+
+  <div class="content-layer">
+
+    <h1 class="text s1-headline headline reveal delay-1 out">
+      SATU BOTOL<br>
+      DUA FUNGSI
+    </h1>
+
+    <p class="text s1-description body-copy reveal delay-2 out">
+      Shampoo? Check. Body wash? Check.<br>
+      Dua kebutuhan dalam satu produk?<br>
+      Absolutely.
+    </p>
+
+    <p class="text s1-banana-copy reveal delay-3 out">
+      Less bottles.<br>
+      Less hassle.<br>
+      More banana vibes.
+    </p>
+
+    <p class="text s1-center-copy body-copy reveal delay-3 out">
+      VICORA dirancang buat kamu yang suka<br>
+      hidup lebih simple tanpa mengorbankan<br>
+      pengalaman mandi yang menyenangkan.
+    </p>
+
+    <div class="text s1-hair reveal delay-4 out">
+      <span class="script feature-script">Hair</span>
+      <span class="feature-sub">CLEAN &amp; FRESH</span>
+    </div>
+
+    <div class="text s1-body reveal delay-4 out">
+      <span class="script feature-script">Body</span>
+      <span class="feature-sub">CLEAN &amp; SMOOTH</span>
+    </div>
+
+  </div>
+
+  <!-- Decorative leaves -->
+  <div class="leaf-float one" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+  <div class="leaf-float two" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+  <div class="leaf-float three" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+  <div class="leaf-float four" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+
+  <!-- Soap bubbles -->
+  <div class="bubble-layer" aria-hidden="true">
+    <span class="bubble glass-bubble interactive"
+          style="--size:34px;--duration:8.5s;--delay:-1s;--drift:42px;--end-scale:1.16;left:8%;bottom:-8%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:67px;--duration:11s;--delay:-5s;--drift:-48px;--end-scale:.92;left:16%;bottom:-10%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:48px;--duration:9.5s;--delay:-3s;--drift:66px;--end-scale:1.12;left:33%;bottom:-9%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:27px;--duration:7.4s;--delay:-6s;--drift:-35px;--end-scale:1.24;left:48%;bottom:-7%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:76px;--duration:12s;--delay:-7s;--drift:-62px;--end-scale:.86;left:61%;bottom:-11%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:39px;--duration:8.8s;--delay:-2s;--drift:49px;--end-scale:1.18;left:76%;bottom:-7%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:25px;--duration:7s;--delay:-4s;--drift:-29px;--end-scale:1.28;left:89%;bottom:-8%;"></span>
+  </div>
+</section>
+
+
+<!-- =======================================================
+     SECTION 2 — YOUR SHOWER ROUTINE JUST GOT AN UPGRADE.
+     ======================================================= -->
+<section
+  id="section-2"
+  class="section slide-2 section-2"
+  aria-label="VICORA — Your Shower Routine Just Got An Upgrade"
+  data-fallback-bg="./assets/background/bg2p3k.png"
+>
+
+  <div class="content-layer">
+
+    <h2 class="text s2-headline headline reveal out">
+      YOUR SHOWER ROUTINE<br>
+      JUST GOT AN UPGRADE.
+    </h2>
+
+    <div class="text s2-copy body-copy reveal delay-2 out">
+      <div>
+        Bayangin lagi buru-buru berangkat kuliah,<br>
+        sekolah, hangout, olahraga, atau sekadar<br>
+        pengen mandi cepat. Nggak perlu mikirin<br>
+        banyak produk.
+      </div>
+
+      <br>
+
+      <strong>
+        Ambil VICORA. Busakan. Bilas. Done.
+      </strong>
+
+      <br><br>
+
+      <strong>
+        Karena personal care itu nggak<br>
+        harus ribet untuk terasa menyenangkan.
+      </strong>
+    </div>
+
+    <div class="text s2-script reveal delay-3 out">
+      <span class="script feature-script">
+        Simple<br>
+        Shower<br>
+        Happier<br>
+        You!
+      </span>
+    </div>
+
+  </div>
+
+  <!-- Decorative leaves -->
+  <div class="leaf-float one" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+  <div class="leaf-float two" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+  <div class="leaf-float three" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+  <div class="leaf-float four" aria-hidden="true">
+    <i class="leaf-shape a"></i>
+    <i class="leaf-shape b"></i>
+    <i class="leaf-shape c"></i>
+  </div>
+
+  <!-- Soap bubbles -->
+  <div class="bubble-layer" aria-hidden="true">
+    <span class="bubble glass-bubble interactive"
+          style="--size:31px;--duration:8.2s;--delay:-1.2s;--drift:37px;--end-scale:1.18;left:7%;bottom:-8%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:56px;--duration:10.6s;--delay:-5.3s;--drift:-51px;--end-scale:.94;left:20%;bottom:-9%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:41px;--duration:9s;--delay:-3.5s;--drift:55px;--end-scale:1.12;left:36%;bottom:-8%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:74px;--duration:12.4s;--delay:-7.1s;--drift:-57px;--end-scale:.87;left:52%;bottom:-11%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:29px;--duration:7.3s;--delay:-2.4s;--drift:43px;--end-scale:1.26;left:69%;bottom:-8%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:47px;--duration:9.8s;--delay:-4.7s;--drift:-39px;--end-scale:1.08;left:83%;bottom:-8%;"></span>
+    <span class="bubble glass-bubble interactive"
+          style="--size:23px;--duration:6.9s;--delay:-6.2s;--drift:27px;--end-scale:1.3;left:94%;bottom:-7%;"></span>
+  </div>
+</section>
+
+
+<script>
+/* =========================================================
+   VICORA — JAVASCRIPT
+   ========================================================= */
+
+(() => {
+  "use strict";
+
+  const sections = [...document.querySelectorAll(".section")];
+
+  /* -------------------------------------------------------
+     BACKGROUND FALLBACK
+     Browser modern biasanya bisa membaca file:///C:/...
+     tetapi jika gagal, pakai assets/background/...
+     ------------------------------------------------------- */
+  sections.forEach(section => {
+    const fallback = section.dataset.fallbackBg;
+    const primary = section.style.backgroundImage;
+
+    /* CSS custom property dibaca dari computed style */
+    const computed = getComputedStyle(section);
+    const bg = computed.backgroundImage;
+
+    if (!bg || bg === "none") {
+      section.style.backgroundImage = `url("${fallback}")`;
+      return;
+    }
+
+    const probe = new Image();
+
+    probe.onload = () => {
+      /* primary background valid */
+    };
+
+    probe.onerror = () => {
+      section.style.backgroundImage = `url("${fallback}")`;
+    };
+
+    const match = bg.match(/url\(["']?(.*?)["']?\)/);
+    if (match && match[1]) {
+      probe.src = match[1];
+    } else {
+      section.style.backgroundImage = `url("${fallback}")`;
+    }
+  });
+
+  /* -------------------------------------------------------
+     SCROLL IN / OUT ENGINE
+     -------------------------------------------------------
+     Setiap kali section menjadi aktif:
+       1. state lama di-reset
+       2. browser dipaksa reflow
+       3. animation IN dijalankan dari awal
+
+     Ketika section ditinggalkan:
+       OUT dijalankan selama ±1 detik.
+
+     Karena hanya ada 2 section, sistem ini secara eksplisit
+     menangani perpindahan dua arah:
+       SECTION 1 <-> SECTION 2
+     dan dapat diulang tanpa batas.
+     ------------------------------------------------------- */
+
+  let activeSection = null;
+  const leavingTimers = new WeakMap();
+
+  function clearLeavingTimer(section) {
+    const timer = leavingTimers.get(section);
+    if (timer) {
+      clearTimeout(timer);
+      leavingTimers.delete(section);
+    }
+  }
+
+  function restartInAnimation(section) {
+    clearLeavingTimer(section);
+
+    /*
+      Reset total agar animasi IN benar-benar mulai dari:
+      opacity 0 + translateY 40px.
+    */
+    section.classList.remove("is-visible");
+    section.classList.remove("is-leaving");
+
+    /*
+      Force reflow: browser wajib membaca state awal
+      sebelum state visible diterapkan.
+    */
+    void section.offsetWidth;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        section.classList.add("is-visible");
+      });
+    });
+  }
+
+  function playOutAnimation(section) {
+    clearLeavingTimer(section);
+
+    /*
+      Section tetap visible ketika is-leaving ditambahkan.
+      Ini membuat transition:
+        opacity 1 -> 0
+        translateY 0 -> -30px
+      benar-benar terlihat.
+    */
+    section.classList.add("is-visible");
+    void section.offsetWidth;
+    section.classList.add("is-leaving");
+
+    const timer = setTimeout(() => {
+      /*
+        Setelah OUT selesai, state dibersihkan.
+        Ketika masuk lagi, restartInAnimation() akan
+        menjalankan IN dari awal.
+      */
+      section.classList.remove("is-visible");
+      section.classList.remove("is-leaving");
+      leavingTimers.delete(section);
+    }, 1050);
+
+    leavingTimers.set(section, timer);
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const section = entry.target;
+
+        /*
+          Hanya anggap sebagai slide aktif jika minimal 45%
+          area section sudah terlihat.
+        */
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+
+          if (activeSection !== section) {
+
+            /*
+              Section sebelumnya:
+              jalankan OUT jika masih visible.
+            */
+            if (
+              activeSection &&
+              activeSection !== section &&
+              activeSection.classList.contains("is-visible")
+            ) {
+              playOutAnimation(activeSection);
+            }
+
+            /*
+              Section baru:
+              jalankan IN dari awal.
+            */
+            activeSection = section;
+            restartInAnimation(section);
+          }
+
+        } else if (
+          !entry.isIntersecting &&
+          section !== activeSection &&
+          section.classList.contains("is-visible") &&
+          !section.classList.contains("is-leaving")
+        ) {
+          /*
+            Fallback OUT jika observer mendeteksi section keluar
+            sebelum section berikutnya melewati threshold.
+          */
+          playOutAnimation(section);
+        }
+      });
+    },
+    {
+      threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.8, 1]
+    }
+  );
+
+  sections.forEach(section => observer.observe(section));
+
+  /* -------------------------------------------------------
+     BUBBLE RANDOMIZATION
+     Membuat gerakan tidak seragam tanpa mengubah layout.
+     ------------------------------------------------------- */
+  document.querySelectorAll(".bubble").forEach((bubble, index) => {
+    const size = parseFloat(
+      getComputedStyle(bubble).getPropertyValue("--size")
+    ) || 40;
+
+    const duration =
+      parseFloat(getComputedStyle(bubble).getPropertyValue("--duration")) || 9;
+
+    bubble.style.setProperty(
+      "--rotate",
+      `${(-25 + Math.random() * 50).toFixed(1)}deg`
+    );
+
+    bubble.style.setProperty(
+      "--drift",
+      `${(-70 + Math.random() * 140).toFixed(1)}px`
+    );
+
+    bubble.style.setProperty(
+      "--end-scale",
+      `${(.88 + Math.random() * .42).toFixed(2)}`
+    );
+
+    /* Sedikit variasi waktu agar bubble tidak sinkron */
+    bubble.style.animationDuration =
+      `${(duration + (Math.random() * 1.4 - .7)).toFixed(2)}s`;
+
+    /* Bubble kecil sedikit lebih cepat */
+    if (size < 32) {
+      bubble.style.animationTimingFunction = "cubic-bezier(.35,.1,.6,1)";
+    }
+  });
+
+  /* -------------------------------------------------------
+     Wheel / touch tetap native.
+     scroll-snap browser mengontrol perpindahan section.
+     ------------------------------------------------------- */
+
+  /* Keyboard navigation: PageDown / PageUp / arrows */
+  window.addEventListener("keydown", event => {
+    if (
+      !["ArrowDown", "ArrowUp", "PageDown", "PageUp", " "].includes(event.key)
+    ) {
+      return;
+    }
+
+    const activeIndex = sections.findIndex(
+      section =>
+        section.classList.contains("is-visible") ||
+        Math.abs(section.getBoundingClientRect().top) < window.innerHeight * .45
+    );
+
+    if (activeIndex < 0) return;
+
+    event.preventDefault();
+
+    let targetIndex = activeIndex;
+
+    if (["ArrowDown", "PageDown", " "].includes(event.key)) {
+      targetIndex = Math.min(activeIndex + 1, sections.length - 1);
+    } else if (["ArrowUp", "PageUp"].includes(event.key)) {
+      targetIndex = Math.max(activeIndex - 1, 0);
+    }
+
+    sections[targetIndex].scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+
+  /* -------------------------------------------------------
+     Fallback font:
+     Bila Blacksword.ttf belum ditempatkan, browser akan
+     memakai Brush Script MT / cursive.
+     ------------------------------------------------------- */
+
+  /* -------------------------------------------------------
+     Initial activation:
+     section 1 tampil sebagai opening screen.
+     ------------------------------------------------------- */
+  requestAnimationFrame(() => {
+    if (sections.length) {
+      activeSection = sections[0];
+      restartInAnimation(sections[0]);
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
